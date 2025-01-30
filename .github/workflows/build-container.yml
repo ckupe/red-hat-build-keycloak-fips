@@ -25,5 +25,5 @@ jobs:
           KC_STORE_PASS: ${{secrets.KC_STORE_PASS}}
           KC_KEY_PASS: ${{secrets.KC_KEY_PASS}}
         run: |
-          docker build -t ghcr.io/ckupe/rhbk-fips:latest -f Containerfile --build-arg KC_STORE_PASS=$KC_STORE_PASS
+          docker build -t ghcr.io/ckupe/rhbk-fips:latest -f Containerfile --build-arg KC_STORE_PASS=$KC_STORE_PASS .
           docker push ghcr.io/ckupe/rhbk-fips:latest
