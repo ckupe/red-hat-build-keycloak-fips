@@ -15,6 +15,7 @@ Finally:
 - Install Red Hat Keycloak Operator from console
 - `oc create -f cluster.yml` and let the 3-node postgres database cluster provision and reconcile. once all 3 pods are Ready, proceed.
 - edit keycloak.yml and set your desired ingress route hostname (https://...)
+- create a TLS secret named `ingress-tls` in the namespace for keycloak to be able to use as the SSL cert. you can steal the default ingress router cert from `openshift-ingress`
 - `oc create -f keycloak.yml` and let the 3-node keycloak cluster provision. check it successfully connects to postgres via pod logs
 
 
