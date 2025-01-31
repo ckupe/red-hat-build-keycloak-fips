@@ -1,0 +1,28 @@
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: Keycloak
+metadata:
+  labels:
+    app: sso
+  name: keycloak
+  namespace: rhbk
+spec:
+  additionalOptions:
+    - name: https-key-store-password
+      value: keycloakkeycloak # This is the keystore pass on the BCFIPS java store
+  db:
+    host: keycloak-db-rw.rhbk.svc.cluster.local
+    passwordSecret:
+      key: password
+      name: keycloak-db-app
+    usernameSecret:
+      key: username
+      name: keycloak-db-app
+    vendor: postgres
+    database: app
+    port: 5432
+  hostname:
+    hostname: https://<your desired url>.domain.tld
+  http:
+    tlsSecret: ingress-tls # Create this certificate pair first, or copy it from the default ingress router cert in openshift-ingress
+  instances: 3
+  image: ghcr.io/ckupe/rhbk-fips:latest # Mirror this into a disconnected env with oc-mirror
