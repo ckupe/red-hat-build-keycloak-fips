@@ -26,6 +26,7 @@ oc get secret keycloak-initial-admin -o json | jq -r '.data.password' | base64 -
 ```
 
 - Login to your instance with your route
+  - username is `temp-admin`
 ```
 oc get -n rhbk routes
 ```
