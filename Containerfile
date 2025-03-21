@@ -4,6 +4,8 @@ FROM registry.redhat.io/rhbk/keycloak-rhel9:26.0-8 as builder
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
 ENV KC_DB=postgres
+ENV KC_HTTPS_CLIENT_AUTH=request
+ENV KC_HTTPS_MANAGEMENT_CLIENT_AUTH=request
 
 ENV KEYCLOAK_HOME=/opt/keycloak
 ARG KC_STORE_PASS=defaultpassword
